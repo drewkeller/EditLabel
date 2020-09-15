@@ -8,8 +8,12 @@
         <DataTrigger Binding="{Binding IsFocused, Source={x:Reference this}}" Value="False" TargetType="ContentView">
             <Setter Property="Content">
                 <Setter.Value>
-                    <Label x:Name="MainLabel" FontAttributes="{Binding FontAttributes, Source={x:Reference this}}" FontFamily="{Binding FontFamily, Source={x:Reference this}}"
-                           Text="{Binding Text, Source={x:Reference this}, Mode=TwoWay}" TextColor="{Binding TextColor, Source={x:Reference this}}" FontSize="{Binding FontSize, Source={x:Reference this}}">
+                    <Label x:Name="MainLabel" 
+                           FontAttributes="{Binding FontAttributes, Source={x:Reference this}}" 
+                           FontFamily="{Binding FontFamily, Source={x:Reference this}}"
+                           Text="{Binding Text, Source={x:Reference this}, Mode=TwoWay}" 
+                           TextColor="{Binding TextColor, Source={x:Reference this}}" 
+                           FontSize="{Binding FontSize, Source={x:Reference this}}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                         </Label.GestureRecognizers>
@@ -20,8 +24,9 @@
         <DataTrigger Binding="{Binding  IsFocused, Source={x:Reference this}}" Value="True" TargetType="local:EditableLabel">
             <Setter Property="Content">
                 <Setter.Value>
-                    <Entry Placeholder="{Binding PlaceHolder, Source={x:Reference this}}" 
-                           FontAttributes="{Binding FontAttributes, Source={x:Reference this}}" x:Name="MainEntry" 
+                    <Entry x:Name="MainEntry" 
+                           Placeholder="{Binding PlaceHolder, Source={x:Reference this}}" 
+                           FontAttributes="{Binding FontAttributes, Source={x:Reference this}}" 
                            TextColor="{Binding TextColor, Source={x:Reference this}}"
                            Text="{Binding Text, Source={x:Reference this}, Mode=TwoWay}" 
                            FontSize="{Binding FontSize, Source={x:Reference this}}"
