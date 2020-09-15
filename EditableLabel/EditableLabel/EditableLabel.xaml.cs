@@ -29,8 +29,26 @@ namespace EditableLabel
                     Thread.Sleep(100);
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        (bindable as EditableLabel).MainEntry.Focus();
-                        (bindable as EditableLabel).MainEntry.CursorPosition = (bindable as EditableLabel).MainEntry.Text?.Length ?? 0;
+                        if (bindable is EditableLabel control)
+                        {
+                            control.Content = control.MainEntry;
+                            control.MainEntry.Focus();
+                            control.MainEntry.CursorPosition = control.MainEntry.Text?.Length ?? 0;
+                        }
+                    });
+                });
+            }
+            else if ((bool)newValue == false)
+            {
+                await Task.Run(() =>
+                {
+                    Thread.Sleep(100);
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        if (bindable is EditableLabel control)
+                        {
+                            control.Content = control.MainLabel;
+                        }
                     });
                 });
             }
@@ -104,6 +122,16 @@ namespace EditableLabel
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             IsFocusedMode = true;
+        }
+
+        private void MainEntry_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            var entry = sender as Entry;
+            if (e.PropertyName == nameof(IsFocused))
+            {
+                if (!entry.IsFocused)
+                    this.IsFocusedMode = false;
+            }
         }
     }
 }
