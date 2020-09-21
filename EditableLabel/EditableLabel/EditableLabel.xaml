@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EditableLabel.EditableLabel"
              xmlns:local="clr-namespace:EditableLabel"
-             x:Name="this">
+             x:Name="this"
+             >
     <ContentView.Triggers>
         <DataTrigger Binding="{Binding IsFocused, Source={x:Reference this}}" Value="False" TargetType="ContentView">
             <Setter Property="Content">
@@ -11,9 +12,10 @@
                     <Label x:Name="MainLabel" 
                            FontAttributes="{Binding FontAttributes, Source={x:Reference this}}" 
                            FontFamily="{Binding FontFamily, Source={x:Reference this}}"
-                           Text="{Binding Text, Source={x:Reference this}, Mode=TwoWay}" 
+                           Text="{Binding Text, Source={x:Reference this}, Mode=OneWay}" 
                            TextColor="{Binding TextColor, Source={x:Reference this}}" 
-                           FontSize="{Binding FontSize, Source={x:Reference this}}">
+                           FontSize="{Binding FontSize, Source={x:Reference this}}"
+                           >
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                         </Label.GestureRecognizers>
@@ -28,7 +30,6 @@
                            Placeholder="{Binding PlaceHolder, Source={x:Reference this}}" 
                            FontAttributes="{Binding FontAttributes, Source={x:Reference this}}" 
                            TextColor="{Binding TextColor, Source={x:Reference this}}"
-                           Text="{Binding Text, Source={x:Reference this}, Mode=TwoWay}" 
                            FontSize="{Binding FontSize, Source={x:Reference this}}"
                            PropertyChanged="MainEntry_PropertyChanged"
                            />

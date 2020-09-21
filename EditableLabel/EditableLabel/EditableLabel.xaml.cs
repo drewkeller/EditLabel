@@ -31,6 +31,7 @@ namespace EditableLabel
                     {
                         if (bindable is EditableLabel control)
                         {
+                            control.MainEntry.Text = control.Text;
                             control.Content = control.MainEntry;
                             control.MainEntry.Focus();
                             control.MainEntry.CursorPosition = control.MainEntry.Text?.Length ?? 0;
@@ -47,6 +48,7 @@ namespace EditableLabel
                     {
                         if (bindable is EditableLabel control)
                         {
+                            control.Text = control.MainEntry.Text;
                             control.Content = control.MainLabel;
                         }
                     });
